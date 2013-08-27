@@ -1,31 +1,9 @@
-Welcome to your custom Vagrant/Puppet setup powered by puPHPet
+Vagrant/Puppet setup for sf2 install
 ==============================================================
 
-The setup includes:
--------------------
-* box:       fred-symfony (http://puppet-vagrant-boxes.puppetlabs.com/debian-607-x64-vbox4210.box)
-* webserver: apache
-* database:  mysql
-* PHP:       PHP 5.4
+puPHPet generated vagrant/puppet setup altered to provide a quick and easy sf2 setup.
 
-Next steps:
------------
-If you have not installed Vagrant yet, go to http://downloads.vagrantup.com/
+Initial commit has no configuration setup so you'll want to edit Vagrantfile / manifests/default.pp
+to change where symfony is installed. By default it will be installed to /var/www/symfony.
 
-Copy the contents of this archive to a new folder
-and run there:
 
-$ vagrant up
-
-Afterwards you may access your box with
-
-$ vagrant ssh
-
-More documentation:
-* Vagrant >= 1.1: http://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html
-* Vagrant <  1.1: http://docs-v1.vagrantup.com/v1/docs/getting-started/ssh.html
-
-If you encounter any problems do not hesitate to create an issue on https://github.com/puphpet/puphpet/issues
-with your serialized configuration which is stored in puphpet.json.
-
-Enjoy!
