@@ -4,6 +4,21 @@ Vagrant/Puppet setup for sf2 install
 puPHPet generated vagrant/puppet setup altered to provide a quick and easy sf2 setup.
 
 Initial commit has no configuration setup so you'll want to edit Vagrantfile / manifests/default.pp
-to change where symfony is installed. By default it will be installed to /var/www/symfony.
+to change where symfony is installed and what your vm is called. 
 
+By default, the docroot is /var/www which is NFS mounted to ./shared.
+Symfony is installed to /var/www/symfony.
+xhProf is installed to /var/www/xhprof
+
+This setup provides:
+* mysql 5.5
+* php5-curl
+* php5-cli
+* php5-mcrypt
+* php5-apc
+* php5-intl
+* build-essential
+* vim
+* vim-common
+* vim-scripts
 
