@@ -28,7 +28,9 @@ Vagrant.configure("2") do |config|
         "mysql_user" => $mysql_user,
         "mysql_pass" => $mysql_pass,
         "vhost"      => $vhost,
-        "docroot"    => $docroot
+        "docroot"    => $docroot,
+        "sfvhost"    => $sfvhost,
+        "xhprofvhost" => $xhprofvhost
     }
   end
 end

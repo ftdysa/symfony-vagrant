@@ -129,7 +129,7 @@ composer::run { 'xhprof-composer-run':
 }
 
 apache::vhost { 'xhprof':
-  server_name => 'xhprof',
+  server_name => $xhprofvhost,
   docroot     => "${xhprofPath}/xhprof_html",
   port        => 80,
   priority    => '1',
@@ -162,8 +162,8 @@ exec { "install-symfony":
 }
 
 apache::vhost { 'symfony':
-  server_name => 'symfony.dev',
-  serveraliases => 'www.symfony.dev',
+  server_name => $sfvhost,
+  serveraliases => "www.${sfvhost}",
   docroot     => "${sfPath}/web",
   port        => 80,
   priority    => '1',
@@ -173,6 +173,7 @@ apache::vhost { 'symfony':
   directory => "${sfPath}/web", 
   template  => "apache/virtualhost/sf2vhost.conf.erb"
 }
+
 class { 'xdebug':
   service => 'apache',
 }

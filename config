@@ -5,6 +5,12 @@ $vm_name = "sf2-vagrant"
 $vhost = "symfony.dev"
 $docroot = "/var/www"
 
+# symfony vhost
+$sfvhost = "symfonyvhost.dev"
+
+# xhprof vhost
+$xhprofvhost = "xhprof.dev"
+
 # IP for VM
 $vm_ip = "192.168.56.101"
 
