@@ -60,12 +60,12 @@ apache::dotconf { 'custom':
 apache::module { 'rewrite': }
 apache::module { 'cache': }
 
-apache::vhost { 'fred.symfony':
-  server_name   => 'fred.symfony',
+apache::vhost { $vhost:
+  server_name   => $vhost,
   serveraliases => [
-    'www.fred.symfony'
+    "www.${vhost}"
   ],
-  docroot       => '/var/www/',
+  docroot       => $docroot,
   port          => '80',
   env_variables => [
 ],
@@ -94,7 +94,7 @@ class { 'php::pear':
   require => Class['php'],
 }
 
-$xhprofPath = '/var/www/xhprof'
+$xhprofPath = "${docroot}/xhprof"
 
 php::pecl::module { 'xhprof':
   use_package     => false,
@@ -139,7 +139,7 @@ apache::vhost { 'xhprof':
   ]
 }
 
-$sfPath = '/var/www/symfony'
+$sfPath = "${docroot}/symfony"
 
 file { "${sfPath}":
   ensure    => 'directory',
@@ -150,14 +150,15 @@ file { "${sfPath}":
 
 exec { "install-symfony":
   path      => [ "/usr/bin", "/usr/local/bin" ],
-  command   => "composer create-project symfony/framework-standard-edition /var/www/symfony/ 2.3.1",
+  command   => "composer create-project symfony/framework-standard-edition ${sfPath} 2.3.1",
   cwd       => $sfPath,
   environment   => "COMPOSER_HOME=/usr/local/bin",
   require   => [
     Class['composer'],
     File["${sfPath}"]
   ],
-  timeout   => 600
+  timeout   => 600,
+  unless    => "test -d ${sfPath}/web"
 }
 
 apache::vhost { 'symfony':
@@ -224,8 +225,8 @@ mysql::db { 'default':
   grant    => [
     'ALL'
   ],
-  user     => 'fred',
-  password => 'defaultpass',
+  user     => $mysql_user,
+  password => $mysql_pass,
   host     => 'localhost',
   charset  => 'utf8',
   require  => Class['mysql::server'],

@@ -1,0 +1,24 @@
+# Name of VM
+$vm_name = "sf2-vagrant"
+
+# default vhost info
+$vhost = "symfony.dev"
+$docroot = "/var/www"
+
+# IP for VM
+$vm_ip = "192.168.56.101"
+
+# Port forwarding
+$guest_port = 80
+$host_port = 8080
+
+# NFS config
+$sync_source = "./shared"
+$sync_target = "/var/www"
+
+# Timezone
+$time_zone = "America/New_York"
+
+# Mysql
+$mysql_user = "fred"
+$mysql_pass = "defaultpass"
